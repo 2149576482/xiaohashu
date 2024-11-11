@@ -9,67 +9,57 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
- * 用户表
+ * 权限表
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserDO {
+public class PermissionDO {
     /**
     * 主键ID
     */
     private Long id;
 
     /**
-    * 小哈书号(唯一凭证)
+    * 父ID
     */
-    private String xiaohashuId;
+    private Long parentId;
 
     /**
-    * 密码
+    * 权限名称
     */
-    private String password;
+    private String name;
 
     /**
-    * 昵称
+    * 类型(1：目录 2：菜单 3：按钮)
     */
-    private String nickname;
+    private Integer type;
 
     /**
-    * 头像
+    * 菜单路由
     */
-    private String avatar;
+    private String menuUrl;
 
     /**
-    * 生日
+    * 菜单图标
     */
-    private Date birthday;
+    private String menuIcon;
 
     /**
-    * 背景图
+    * 管理系统中的显示顺序
     */
-    private String backgroundImg;
+    private Integer sort;
 
     /**
-    * 手机号
+    * 权限标识
     */
-    private String phone;
+    private String permissionKey;
 
     /**
-    * 性别(0：女 1：男)
-    */
-    private Integer sex;
-
-    /**
-    * 状态(0：启用 1：禁用)
+    * 状态(0：启用；1：禁用)
     */
     private Integer status;
-
-    /**
-    * 个人简介
-    */
-    private String introduction;
 
     /**
     * 创建时间

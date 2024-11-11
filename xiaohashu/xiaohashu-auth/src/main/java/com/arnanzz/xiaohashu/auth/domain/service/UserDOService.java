@@ -1,18 +1,13 @@
 package com.arnanzz.xiaohashu.auth.domain.service;
 
-import com.arnanzz.xiaohashu.auth.domain.entity.UserDO;
+import com.arnanzz.framework.common.response.Response;
+import com.arnanzz.xiaohashu.auth.model.vo.user.UserLoginReqVO;
+
 public interface UserDOService{
 
-    int deleteByPrimaryKey(Long id);
-
-    int insert(UserDO record);
-
-    int insertSelective(UserDO record);
-
-    UserDO selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(UserDO record);
-
-    int updateByPrimaryKey(UserDO record);
+    /**
+     * 登录与注册
+     */
+    Response<String> loginAndRegister(UserLoginReqVO userLoginReqVO);
 
 }

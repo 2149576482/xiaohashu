@@ -9,57 +9,27 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
- * 用户表
+ * 角色表
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserDO {
+public class RoleDO {
     /**
     * 主键ID
     */
     private Long id;
 
     /**
-    * 小哈书号(唯一凭证)
+    * 角色名
     */
-    private String xiaohashuId;
+    private String roleName;
 
     /**
-    * 密码
+    * 角色唯一标识
     */
-    private String password;
-
-    /**
-    * 昵称
-    */
-    private String nickname;
-
-    /**
-    * 头像
-    */
-    private String avatar;
-
-    /**
-    * 生日
-    */
-    private Date birthday;
-
-    /**
-    * 背景图
-    */
-    private String backgroundImg;
-
-    /**
-    * 手机号
-    */
-    private String phone;
-
-    /**
-    * 性别(0：女 1：男)
-    */
-    private Integer sex;
+    private String roleKey;
 
     /**
     * 状态(0：启用 1：禁用)
@@ -67,9 +37,14 @@ public class UserDO {
     private Integer status;
 
     /**
-    * 个人简介
+    * 管理系统中的显示顺序
     */
-    private String introduction;
+    private Integer sort;
+
+    /**
+    * 备注
+    */
+    private String remark;
 
     /**
     * 创建时间
@@ -77,7 +52,7 @@ public class UserDO {
     private LocalDateTime createTime;
 
     /**
-    * 更新时间
+    * 最后一次更新时间
     */
     private LocalDateTime updateTime;
 
@@ -85,5 +60,6 @@ public class UserDO {
     * 逻辑删除(0：未删除 1：已删除)
     */
     private Boolean isDeleted;
+
 
 }

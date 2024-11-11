@@ -1,0 +1,605 @@
+2024-11-11 19:43:27.235 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Starting XiaohashuAuthApplication using Java 17.0.2 with PID 2376 (E:\java_workspace\project\xiaohashu\xiaohashu\xiaohashu-auth\target\classes started by xu in E:\java_workspace\project\xiaohashu\xiaohashu)
+2024-11-11 19:43:27.237 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - The following 1 profile is active: "dev"
+2024-11-11 19:43:27.970 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-11 19:43:27.973 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-11-11 19:43:28.001 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2024-11-11 19:43:28.767 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-11-11 19:43:28.776 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-11 19:43:28.776 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-11-11 19:43:28.866 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-11 19:43:28.866 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1590 ms
+2024-11-11 19:43:29.330 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-11-11 19:43:43.662 [main] ERROR com.alibaba.druid.pool.DruidDataSource - init datasource error, url: jdbc:mysql://192.168.117.200:3306/xiaohashu?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:898)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:823)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:132)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:126)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:244)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:126)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1699)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1794)
+	at com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:936)
+	at com.alibaba.druid.spring.boot3.autoconfigure.DruidDataSourceWrapper.afterPropertiesSet(DruidDataSourceWrapper.java:52)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:548)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1324)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1161)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1479)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1388)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:709)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:692)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:133)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:481)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1397)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:961)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:915)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
+	at com.arnanzz.xiaohashu.auth.XiaohashuAuthApplication.main(XiaohashuAuthApplication.java:12)
+Caused by: com.mysql.cj.exceptions.CJException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:124)
+	at com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:153)
+	at com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:49)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:447)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:212)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1433)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:842)
+	... 70 common frames omitted
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:130)
+	... 76 common frames omitted
+2024-11-11 19:43:43.666 [main] ERROR com.alibaba.druid.pool.DruidDataSource - {dataSource-1} init error
+java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:898)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:823)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:132)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:126)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:244)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:126)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1699)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1794)
+	at com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:936)
+	at com.alibaba.druid.spring.boot3.autoconfigure.DruidDataSourceWrapper.afterPropertiesSet(DruidDataSourceWrapper.java:52)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:548)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1324)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1161)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1479)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1388)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:709)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:692)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:133)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:481)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1397)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:961)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:915)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
+	at com.arnanzz.xiaohashu.auth.XiaohashuAuthApplication.main(XiaohashuAuthApplication.java:12)
+Caused by: com.mysql.cj.exceptions.CJException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:124)
+	at com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:153)
+	at com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:49)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:447)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:212)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1433)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:842)
+	... 70 common frames omitted
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:130)
+	... 76 common frames omitted
+2024-11-11 19:43:43.666 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-11-11 19:43:43.667 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userDOServiceImpl': Unsatisfied dependency expressed through field 'userDOMapper': Error creating bean with name 'userDOMapper' defined in file [E:\java_workspace\project\xiaohashu\xiaohashu\xiaohashu-auth\target\classes\com\arnanzz\xiaohashu\auth\domain\mapper\UserDOMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionFactory' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [com/alibaba/druid/spring/boot3/autoconfigure/DruidDataSourceAutoConfigure.class]: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+2024-11-11 19:43:43.684 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2024-11-11 19:43:43.706 [main] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-11-11 19:43:43.720 [main] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userDOServiceImpl': Unsatisfied dependency expressed through field 'userDOMapper': Error creating bean with name 'userDOMapper' defined in file [E:\java_workspace\project\xiaohashu\xiaohashu\xiaohashu-auth\target\classes\com\arnanzz\xiaohashu\auth\domain\mapper\UserDOMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionFactory' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [com/alibaba/druid/spring/boot3/autoconfigure/DruidDataSourceAutoConfigure.class]: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:712)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:692)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:133)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:481)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1397)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:961)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:915)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
+	at com.arnanzz.xiaohashu.auth.XiaohashuAuthApplication.main(XiaohashuAuthApplication.java:12)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userDOMapper' defined in file [E:\java_workspace\project\xiaohashu\xiaohashu\xiaohashu-auth\target\classes\com\arnanzz\xiaohashu\auth\domain\mapper\UserDOMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionFactory' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [com/alibaba/druid/spring/boot3/autoconfigure/DruidDataSourceAutoConfigure.class]: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1494)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1388)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:709)
+	... 20 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionFactory' parameter 0: Error creating bean with name 'dataSource' defined in class path resource [com/alibaba/druid/spring/boot3/autoconfigure/DruidDataSourceAutoConfigure.class]: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:548)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1324)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1161)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1479)
+	... 31 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [com/alibaba/druid/spring/boot3/autoconfigure/DruidDataSourceAutoConfigure.class]: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1751)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
+	... 44 common frames omitted
+Caused by: java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:110)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:89)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:63)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:73)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:898)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:823)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:132)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:126)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:244)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:126)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1699)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1794)
+	at com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:936)
+	at com.alibaba.druid.spring.boot3.autoconfigure.DruidDataSourceWrapper.afterPropertiesSet(DruidDataSourceWrapper.java:52)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1797)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1747)
+	... 55 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:124)
+	at com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:153)
+	at com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:49)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:447)
+	at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:212)
+	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1433)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:842)
+	... 70 common frames omitted
+Caused by: com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+	at com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:130)
+	... 76 common frames omitted
+2024-11-11 19:45:26.156 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Starting XiaohashuAuthApplication using Java 17.0.2 with PID 3816 (E:\java_workspace\project\xiaohashu\xiaohashu\xiaohashu-auth\target\classes started by xu in E:\java_workspace\project\xiaohashu\xiaohashu)
+2024-11-11 19:45:26.156 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - The following 1 profile is active: "dev"
+2024-11-11 19:45:26.726 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-11 19:45:26.728 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-11-11 19:45:26.751 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2024-11-11 19:45:27.313 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-11-11 19:45:27.320 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-11 19:45:27.320 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-11-11 19:45:27.398 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-11 19:45:27.398 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1186 ms
+2024-11-11 19:45:27.715 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-11-11 19:45:31.100 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-11-11 19:45:31.665 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-11-11 19:45:31.671 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Started XiaohashuAuthApplication in 5.984 seconds (process running for 6.57)
+2024-11-11 19:46:23.171 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-11-11 19:46:23.179 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-11-11 19:46:26.681 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Starting XiaohashuAuthApplication using Java 17.0.2 with PID 3300 (E:\java_workspace\project\xiaohashu\xiaohashu\xiaohashu-auth\target\classes started by xu in E:\java_workspace\project\xiaohashu\xiaohashu)
+2024-11-11 19:46:26.684 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - The following 1 profile is active: "dev"
+2024-11-11 19:46:27.256 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-11 19:46:27.259 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-11-11 19:46:27.282 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2024-11-11 19:46:27.894 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-11-11 19:46:27.901 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-11 19:46:27.901 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-11-11 19:46:27.978 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-11 19:46:27.978 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1249 ms
+2024-11-11 19:46:28.288 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-11-11 19:46:28.830 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-11-11 19:46:29.346 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-11-11 19:46:29.353 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Started XiaohashuAuthApplication in 3.121 seconds (process running for 3.691)
+2024-11-11 19:46:45.273 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-11-11 19:46:45.280 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-11-11 19:46:47.639 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Starting XiaohashuAuthApplication using Java 17.0.2 with PID 3256 (E:\java_workspace\project\xiaohashu\xiaohashu\xiaohashu-auth\target\classes started by xu in E:\java_workspace\project\xiaohashu\xiaohashu)
+2024-11-11 19:46:47.641 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - The following 1 profile is active: "dev"
+2024-11-11 19:46:48.173 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-11 19:46:48.175 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-11-11 19:46:48.198 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2024-11-11 19:46:48.763 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-11-11 19:46:48.770 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-11 19:46:48.770 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-11-11 19:46:48.848 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-11 19:46:48.849 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1165 ms
+2024-11-11 19:46:49.174 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-11-11 19:46:50.190 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-11-11 19:46:50.705 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-11-11 19:46:50.711 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Started XiaohashuAuthApplication in 3.531 seconds (process running for 4.202)
+2024-11-11 19:48:13.350 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-11 19:48:13.351 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-11 19:48:13.352 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-11-11 19:48:13.380 [http-nio-8080-exec-2] ERROR c.a.x.auth.exception.GlobalExceptionHandler - /verification/code/send request error, 
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:441)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:382)
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:126)
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:68)
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:504)
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1274)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1056)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at com.alibaba.druid.support.jakarta.WebStatFilter.doFilter(WebStatFilter.java:113)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at cn.dev33.satoken.filter.SaPathCheckFilterForJakartaServlet.doFilter(SaPathCheckFilterForJakartaServlet.java:55)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-11-11 19:48:47.878 [http-nio-8080-exec-5] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求开始: [发送验证码], 入参: {"phone":"15633045860"}, 请求类: VerificationCodeController, 请求方法: send =================================== 
+2024-11-11 19:48:48.479 [http-nio-8080-exec-5] INFO  c.a.x.a.service.impl.VerificationCodeServiceImpl - ===== 手机号: 15633045860 ====== 生成验证码: 656164
+2024-11-11 19:48:48.575 [http-nio-8080-exec-5] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求结束: [发送验证码], 耗时: 699ms, 出参: {"success":true,"message":null,"errorCode":null,"data":null} =================================== 
+2024-11-11 19:49:08.388 [http-nio-8080-exec-6] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求开始: [发送验证码], 入参: {"phone":"15633045860"}, 请求类: VerificationCodeController, 请求方法: send =================================== 
+2024-11-11 19:49:08.392 [http-nio-8080-exec-6] WARN  c.a.x.auth.exception.GlobalExceptionHandler - /verification/code/send request fail, errorCode: AUTH-20000, errorMessage: 请求太频繁，请3分钟后再试
+2024-11-11 19:49:54.387 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-11-11 19:49:54.405 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-11-11 20:01:27.259 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Starting XiaohashuAuthApplication using Java 17.0.2 with PID 13256 (E:\java_workspace\project\xiaohashu\xiaohashu\xiaohashu-auth\target\classes started by xu in E:\java_workspace\project\xiaohashu\xiaohashu)
+2024-11-11 20:01:27.260 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - The following 1 profile is active: "dev"
+2024-11-11 20:01:27.917 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-11 20:01:27.920 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-11-11 20:01:27.945 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2024-11-11 20:01:28.713 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-11-11 20:01:28.728 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-11 20:01:28.728 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-11-11 20:01:28.823 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-11 20:01:28.823 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1521 ms
+2024-11-11 20:01:29.198 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-11-11 20:01:30.010 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-11-11 20:01:30.617 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-11-11 20:01:30.625 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Started XiaohashuAuthApplication in 3.948 seconds (process running for 4.899)
+2024-11-11 20:01:40.077 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-11 20:01:40.077 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-11 20:01:40.078 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-11-11 20:01:40.170 [http-nio-8080-exec-2] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求开始: [发送验证码], 入参: {"phone":"17631536801"}, 请求类: VerificationCodeController, 请求方法: send =================================== 
+2024-11-11 20:01:40.609 [http-nio-8080-exec-2] INFO  c.a.x.a.service.impl.VerificationCodeServiceImpl - ===== 手机号: 17631536801 ====== 生成验证码: 624998
+2024-11-11 20:01:40.610 [AuthExecutor-1] INFO  com.arnanzz.xiaohashu.auth.sms.AliyunSmsHelper - ==> 开始短信发送, phone: 17631536801, signName: 阿里云短信测试, templateCode: SMS_154950909, templateParam: {"code":"624998"}
+2024-11-11 20:01:40.615 [http-nio-8080-exec-2] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求结束: [发送验证码], 耗时: 454ms, 出参: {"success":true,"message":null,"errorCode":null,"data":null} =================================== 
+2024-11-11 20:01:41.691 [AuthExecutor-1] INFO  com.arnanzz.xiaohashu.auth.sms.AliyunSmsHelper - ==> 短信发送成功, response: {"headers":{"access-control-allow-origin":"*","date":"Mon, 11 Nov 2024 12:01:42 GMT","content-length":"110","keep-alive":"timeout=25","x-acs-request-id":"5CC76AC6-B6CA-5D64-9034-FA764B90A968","connection":"keep-alive","content-type":"application/json;charset=utf-8","etag":"11Z833qyWYmJm++BV6HDggg0","access-control-expose-headers":"*","x-acs-trace-id":"b0bb87001ed3f631292f03888e4a95e7"},"statusCode":200,"body":{"bizId":"948416631326501774^0","code":"OK","message":"OK","requestId":"5CC76AC6-B6CA-5D64-9034-FA764B90A968"}}
+2024-11-11 20:02:38.132 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-11-11 20:02:38.140 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-11-11 20:08:10.343 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Starting XiaohashuAuthApplication using Java 17.0.2 with PID 19996 (E:\java_workspace\project\xiaohashu\xiaohashu\xiaohashu-auth\target\classes started by xu in E:\java_workspace\project\xiaohashu\xiaohashu)
+2024-11-11 20:08:10.346 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - The following 1 profile is active: "dev"
+2024-11-11 20:08:10.969 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-11 20:08:10.972 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-11-11 20:08:10.999 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+2024-11-11 20:08:11.679 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-11-11 20:08:11.687 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-11 20:08:11.688 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-11-11 20:08:11.778 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-11 20:08:11.778 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1384 ms
+2024-11-11 20:08:12.119 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-11-11 20:08:12.716 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-11-11 20:08:13.286 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-11-11 20:08:13.293 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Started XiaohashuAuthApplication in 3.458 seconds (process running for 4.149)
+2024-11-11 20:08:32.494 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-11 20:08:32.495 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-11 20:08:32.496 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2024-11-11 20:08:32.586 [http-nio-8080-exec-1] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求开始: [发送验证码], 入参: {"phone":"1763153680"}, 请求类: VerificationCodeController, 请求方法: send =================================== 
+2024-11-11 20:08:33.011 [http-nio-8080-exec-1] INFO  c.a.x.a.service.impl.VerificationCodeServiceImpl - ===== 手机号: 1763153680 ====== 生成验证码: 787188
+2024-11-11 20:08:33.012 [AuthExecutor-1] INFO  com.arnanzz.xiaohashu.auth.sms.AliyunSmsHelper - ==> 开始短信发送, phone: 1763153680, signName: 阿里云短信测试, templateCode: SMS_154950909, templateParam: {"code":"787188"}
+2024-11-11 20:08:33.019 [http-nio-8080-exec-1] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求结束: [发送验证码], 耗时: 441ms, 出参: {"success":true,"message":null,"errorCode":null,"data":null} =================================== 
+2024-11-11 20:08:44.634 [AuthExecutor-1] INFO  com.arnanzz.xiaohashu.auth.sms.AliyunSmsHelper - ==> 短信发送成功, response: {"headers":{"access-control-allow-origin":"*","date":"Mon, 11 Nov 2024 12:08:45 GMT","content-length":"124","keep-alive":"timeout=25","x-acs-request-id":"357D6E77-A786-5171-A424-63A13F321C20","connection":"keep-alive","content-type":"application/json;charset=utf-8","etag":"1ewpXxUM11rfj+l3KkUyBkw8","access-control-expose-headers":"*","x-acs-trace-id":"cbc5a78de6a5ac1a69b5f43012b5b4cb"},"statusCode":200,"body":{"bizId":null,"code":"isv.MOBILE_NUMBER_ILLEGAL","message":"手机号码格式错误","requestId":"357D6E77-A786-5171-A424-63A13F321C20"}}
+2024-11-11 20:09:03.409 [http-nio-8080-exec-6] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求开始: [发送验证码], 入参: {"phone":"1763153"}, 请求类: VerificationCodeController, 请求方法: send =================================== 
+2024-11-11 20:09:03.411 [http-nio-8080-exec-6] INFO  c.a.x.a.service.impl.VerificationCodeServiceImpl - ===== 手机号: 1763153 ====== 生成验证码: 077630
+2024-11-11 20:09:03.411 [AuthExecutor-2] INFO  com.arnanzz.xiaohashu.auth.sms.AliyunSmsHelper - ==> 开始短信发送, phone: 1763153, signName: 阿里云短信测试, templateCode: SMS_154950909, templateParam: {"code":"077630"}
+2024-11-11 20:09:03.412 [http-nio-8080-exec-6] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求结束: [发送验证码], 耗时: 3ms, 出参: {"success":true,"message":null,"errorCode":null,"data":null} =================================== 
+2024-11-11 20:09:03.594 [AuthExecutor-2] INFO  com.arnanzz.xiaohashu.auth.sms.AliyunSmsHelper - ==> 短信发送成功, response: {"headers":{"access-control-allow-origin":"*","date":"Mon, 11 Nov 2024 12:09:04 GMT","content-length":"124","keep-alive":"timeout=25","x-acs-request-id":"892ABD57-7689-5EAB-AC3F-1A353CC8AA88","connection":"keep-alive","content-type":"application/json;charset=utf-8","etag":"1vgBYuV/+BBpH75Tk+qMNag8","access-control-expose-headers":"*","x-acs-trace-id":"149513d1d2104217646c616175deb391"},"statusCode":200,"body":{"bizId":null,"code":"isv.MOBILE_NUMBER_ILLEGAL","message":"手机号码格式错误","requestId":"892ABD57-7689-5EAB-AC3F-1A353CC8AA88"}}
+2024-11-11 20:09:09.336 [http-nio-8080-exec-8] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求开始: [发送验证码], 入参: {"phone":"1763153"}, 请求类: VerificationCodeController, 请求方法: send =================================== 
+2024-11-11 20:09:09.357 [http-nio-8080-exec-8] WARN  c.a.x.auth.exception.GlobalExceptionHandler - /verification/code/send request fail, errorCode: AUTH-20000, errorMessage: 请求太频繁，请3分钟后再试
+2024-11-11 20:09:30.538 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-11-11 20:09:30.543 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-11-11 20:09:34.389 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Starting XiaohashuAuthApplication using Java 17.0.2 with PID 23612 (E:\java_workspace\project\xiaohashu\xiaohashu\xiaohashu-auth\target\classes started by xu in E:\java_workspace\project\xiaohashu\xiaohashu)
+2024-11-11 20:09:34.391 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - The following 1 profile is active: "dev"
+2024-11-11 20:09:35.039 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-11 20:09:35.041 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-11-11 20:09:35.072 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
+2024-11-11 20:09:35.742 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-11-11 20:09:35.749 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-11 20:09:35.750 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-11-11 20:09:35.839 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-11 20:09:35.839 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1409 ms
+2024-11-11 20:09:36.269 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-11-11 20:09:36.975 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-11-11 20:09:37.605 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-11-11 20:09:37.617 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Started XiaohashuAuthApplication in 3.746 seconds (process running for 4.408)
+2024-11-11 20:09:55.493 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-11 20:09:55.493 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-11 20:09:55.494 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2024-11-11 20:09:55.605 [http-nio-8080-exec-2] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求开始: [发送验证码], 入参: {"phone":"1763153"}, 请求类: VerificationCodeController, 请求方法: send =================================== 
+2024-11-11 20:09:56.085 [http-nio-8080-exec-2] WARN  c.a.x.auth.exception.GlobalExceptionHandler - /verification/code/send request fail, errorCode: AUTH-20000, errorMessage: 请求太频繁，请3分钟后再试
+2024-11-11 20:10:10.182 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-11-11 20:10:10.190 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-11-11 20:10:14.012 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Starting XiaohashuAuthApplication using Java 17.0.2 with PID 13088 (E:\java_workspace\project\xiaohashu\xiaohashu\xiaohashu-auth\target\classes started by xu in E:\java_workspace\project\xiaohashu\xiaohashu)
+2024-11-11 20:10:14.014 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - The following 1 profile is active: "dev"
+2024-11-11 20:10:14.541 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-11 20:10:14.543 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-11-11 20:10:14.564 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2024-11-11 20:10:15.114 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-11-11 20:10:15.126 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-11 20:10:15.126 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-11-11 20:10:15.202 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-11 20:10:15.202 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1143 ms
+2024-11-11 20:10:15.509 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-11-11 20:10:16.052 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-11-11 20:10:16.588 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-11-11 20:10:16.595 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Started XiaohashuAuthApplication in 3.024 seconds (process running for 3.585)
+2024-11-11 20:11:24.203 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-11 20:11:24.203 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-11 20:11:24.204 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-11-11 20:11:24.326 [http-nio-8080-exec-2] WARN  c.a.x.auth.exception.GlobalExceptionHandler - /verification/code/send request error, errorCode: AUTH-10001, errorMessage: phone 手机号格式不正确, 需为 11 位数字, 当前值: '1763153'; 
+2024-11-11 20:15:14.071 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-11-11 20:15:14.082 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-11-11 21:03:55.023 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Starting XiaohashuAuthApplication using Java 17.0.2 with PID 13132 (E:\java_workspace\project\xiaohashu\xiaohashu\xiaohashu-auth\target\classes started by xu in E:\java_workspace\project\xiaohashu\xiaohashu)
+2024-11-11 21:03:55.025 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - The following 1 profile is active: "dev"
+2024-11-11 21:03:55.584 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-11 21:03:55.587 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-11-11 21:03:55.619 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2024-11-11 21:03:56.195 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-11-11 21:03:56.203 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-11 21:03:56.203 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-11-11 21:03:56.287 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-11 21:03:56.288 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1227 ms
+2024-11-11 21:03:56.368 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-11-11 21:03:56.773 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-11-11 21:03:57.617 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-11-11 21:03:57.624 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Started XiaohashuAuthApplication in 3.087 seconds (process running for 3.734)
+2024-11-11 21:04:58.664 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-11 21:04:58.664 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-11 21:04:58.665 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-11-11 21:04:58.807 [http-nio-8080-exec-1] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求开始: [发送验证码], 入参: {"phone":"17631536801"}, 请求类: VerificationCodeController, 请求方法: send =================================== 
+2024-11-11 21:04:59.286 [http-nio-8080-exec-1] INFO  c.a.x.a.d.service.impl.VerificationCodeServiceImpl - ===== 手机号: 17631536801 ====== 生成验证码: 986776
+2024-11-11 21:04:59.288 [AuthExecutor-1] INFO  com.arnanzz.xiaohashu.auth.sms.AliyunSmsHelper - ==> 开始短信发送, phone: 17631536801, signName: 阿里云短信测试, templateCode: SMS_154950909, templateParam: {"code":"986776"}
+2024-11-11 21:04:59.295 [http-nio-8080-exec-1] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求结束: [发送验证码], 耗时: 494ms, 出参: {"success":true,"message":null,"errorCode":null,"data":null} =================================== 
+2024-11-11 21:05:11.312 [AuthExecutor-1] INFO  com.arnanzz.xiaohashu.auth.sms.AliyunSmsHelper - ==> 短信发送成功, response: {"headers":{"access-control-allow-origin":"*","date":"Mon, 11 Nov 2024 13:05:11 GMT","content-length":"110","keep-alive":"timeout=25","x-acs-request-id":"1926AE78-B963-5B4D-AFBF-0BD6F3F24416","connection":"keep-alive","content-type":"application/json;charset=utf-8","etag":"1VuFNpdHLI9eO0OhJysaoNg0","access-control-expose-headers":"*","x-acs-trace-id":"3e5745728b0f3241be9cc6570452d205"},"statusCode":200,"body":{"bizId":"200005631330311509^0","code":"OK","message":"OK","requestId":"1926AE78-B963-5B4D-AFBF-0BD6F3F24416"}}
+2024-11-11 21:06:31.781 [http-nio-8080-exec-5] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求开始: [用户登录/注册], 入参: {"phone":"17631536801","code":"986776","password":null,"type":1}, 请求类: UserController, 请求方法: loginAndRegister =================================== 
+2024-11-11 21:06:31.827 [http-nio-8080-exec-5] DEBUG c.a.x.a.domain.mapper.UserDOMapper.selectByPhone - ==>  Preparing: select id, password from t_user where phone = ?
+2024-11-11 21:06:31.997 [http-nio-8080-exec-5] DEBUG c.a.x.a.domain.mapper.UserDOMapper.selectByPhone - ==> Parameters: 17631536801(String)
+2024-11-11 21:06:32.124 [http-nio-8080-exec-5] DEBUG c.a.x.a.domain.mapper.UserDOMapper.selectByPhone - <==      Total: 1
+2024-11-11 21:06:32.128 [http-nio-8080-exec-5] INFO  c.a.x.auth.domain.service.impl.UserDOServiceImpl - ==> 用户是否注册, phone: 17631536801, userDO: {"id":4,"xiaohashuId":null,"password":"$2a$10$1LkGisdgqwr29o0h8cH0suKnO6xU1puyVqq.TP5p1HFFcQsqrCRBq","nickname":null,"avatar":null,"birthday":null,"backgroundImg":null,"phone":null,"sex":null,"status":null,"introduction":null,"createTime":null,"updateTime":null,"isDeleted":null}
+2024-11-11 21:06:32.199 [http-nio-8080-exec-5] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求结束: [用户登录/注册], 耗时: 419ms, 出参: {"success":true,"message":null,"errorCode":null,"data":"b57bcf11-0be8-484e-a4d0-325d46565a83"} =================================== 
+2024-11-11 21:11:40.056 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-11-11 21:11:40.062 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2024-11-11 21:11:45.043 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Starting XiaohashuAuthApplication using Java 17.0.2 with PID 8800 (E:\java_workspace\project\xiaohashu\xiaohashu\xiaohashu-auth\target\classes started by xu in E:\java_workspace\project\xiaohashu\xiaohashu)
+2024-11-11 21:11:45.046 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - The following 1 profile is active: "dev"
+2024-11-11 21:11:45.627 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-11 21:11:45.629 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-11-11 21:11:45.657 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
+2024-11-11 21:11:46.263 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-11-11 21:11:46.278 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-11 21:11:46.278 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-11-11 21:11:46.356 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-11 21:11:46.356 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1273 ms
+2024-11-11 21:11:46.438 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2024-11-11 21:11:47.324 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2024-11-11 21:11:48.265 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-11-11 21:11:48.274 [main] INFO  c.arnanzz.xiaohashu.auth.XiaohashuAuthApplication - Started XiaohashuAuthApplication in 3.709 seconds (process running for 4.392)
+2024-11-11 21:11:55.776 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-11 21:11:55.776 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-11 21:11:55.778 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2024-11-11 21:11:55.915 [http-nio-8080-exec-1] INFO  c.a.f.b.operationlog.aspect.ApiOperationLogAspect - ====== 请求开始: [用户登录/注册], 入参: {"phone":"17631536801","code":"","password":null,"type":1}, 请求类: UserController, 请求方法: loginAndRegister =================================== 
+2024-11-11 21:11:55.926 [http-nio-8080-exec-1] WARN  c.a.x.auth.exception.GlobalExceptionHandler - /user/login request error, errorCode: AUTH-10001, errorMessage: 验证码不能为空
+2024-11-11 21:36:41.003 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2024-11-11 21:36:41.004 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

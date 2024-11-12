@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: xiaohashu-gateway # 应用名称
+  profiles:
+    active: dev # 默认激活 dev 本地开发环境
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        group: DEFAULT_GROUP
+        namespace: xiaohashu
+        server-addr: 192.168.117.200:8848

@@ -84,31 +84,32 @@ public class PushRolePermissions2RedisRunner implements ApplicationRunner {
                 );
 
                 // 组织角色ID-权限 关系
-                Map<Long, List<PermissionDO>> roleIdPermissionDOMap = Maps.newHashMap();
+                Map<String, List<String>> roleIdPermissionDOMap = Maps.newHashMap();
 
                 // 循环所有的角色对象
                 roleDOS.forEach(roleDO -> {
-
-                    // 当前角色ID
+                    // 当前角色id
                     Long roleDOId = roleDO.getId();
+                    // 当前角色roleKey
+                    String roleKey = roleDO.getRoleKey();
                     // 获取当前角色id 对应的所有权限id
                     List<Long> permissionIds = roleIdPermissionIdsMap.get(roleDOId);
                     if (CollUtil.isNotEmpty(permissionIds)) {
                         // 如果当前角色有对应的权限id不为空
-                        List<PermissionDO> permissionDOList = Lists.newArrayList();
+                        List<String> permissionDOList = Lists.newArrayList();
                         // 遍历所有的权限id
                         permissionIds.forEach(permissionId -> {
                             // 根据权限id 获取到权限对象
                             PermissionDO permissionDO = permissionDOMap.get(permissionId);
-                            permissionDOList.add(permissionDO);
+                            permissionDOList.add(permissionDO.getPermissionKey());
                         });
-                        roleIdPermissionDOMap.put(roleDOId, permissionDOList);
+                        roleIdPermissionDOMap.put(roleKey, permissionDOList);
                     }
                 });
 
                 // 同步至 Redis 中，方便后续网关查询鉴权使用
-                roleIdPermissionDOMap.forEach((roleId, permissionDO) -> {
-                    String key = RedisKeyConstants.buildRolePermissionsKey(roleId);
+                roleIdPermissionDOMap.forEach((roleKey, permissionDO) -> {
+                    String key = RedisKeyConstants.buildRolePermissionsKey(roleKey);
                     redisTemplate.opsForValue().set(key, JsonUtils.toJsonString(permissionDO));
                 });
             }

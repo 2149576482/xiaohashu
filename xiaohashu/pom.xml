@@ -21,6 +21,8 @@
     <module>xiaohashu-auth</module>
     <!-- 平台基础框架 -->
     <module>xiaoha-framework</module>
+    <!-- gateway网关服务 -->
+    <module>xiaohashu-gateway</module>
   </modules>
 
   <properties>
@@ -42,13 +44,14 @@
     <spring-cloud.version>2022.0.0</spring-cloud.version>
     <jackson.version>2.16.1</jackson.version>
     <mysql-connector-java.version>8.0.29</mysql-connector-java.version>
-    <druid.version>1.2.21</druid.version>
+    <druid.version>1.2.23</druid.version>
     <flatten-maven-plugin.version>1.5.0</flatten-maven-plugin.version>
     <sa-token.version>1.38.0</sa-token.version>
     <guava.version>33.0.0-jre</guava.version>
     <hutool.version>5.8.26</hutool.version>
     <commons-lang3.version>3.12.0</commons-lang3.version>
     <dysmsapi.version>2.0.24</dysmsapi.version>
+    <transmittable-thread-local.version>2.14.2</transmittable-thread-local.version>
   </properties>
 
   <!-- 统一依赖管理 -->
@@ -103,6 +106,11 @@
         <artifactId>xiaoha-spring-boot-starter-jackson</artifactId>
         <version>${revision}</version>
       </dependency>
+      <dependency>
+        <groupId>com.arnanzz</groupId>
+        <artifactId>xiaoha-spring-boot-starter-biz-context</artifactId>
+        <version>${revision}</version>
+      </dependency>
       <!-- Jackson -->
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
@@ -146,6 +154,11 @@
         <artifactId>sa-token-redis-jackson</artifactId>
         <version>${sa-token.version}</version>
       </dependency>
+      <dependency>
+        <groupId>cn.dev33</groupId>
+        <artifactId>sa-token-reactor-spring-boot3-starter</artifactId>
+        <version>${sa-token.version}</version>
+      </dependency>
       <!-- 相关工具类 -->
       <dependency>
         <groupId>com.google.guava</groupId>
@@ -169,6 +182,13 @@
         <groupId>com.aliyun</groupId>
         <artifactId>dysmsapi20170525</artifactId>
         <version>${dysmsapi.version}</version>
+      </dependency>
+      <!-- TransmittableThreadLocal 是阿里巴巴开源的一个库，专门为了解决在使用线程池或异步执行框架时，
+      InheritableThreadLocal 不能传递父子线程上下文的问题。 -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>transmittable-thread-local</artifactId>
+        <version>${transmittable-thread-local.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

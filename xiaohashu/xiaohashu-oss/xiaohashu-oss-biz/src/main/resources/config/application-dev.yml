@@ -1,0 +1,12 @@
+#=================================================================
+# minio (上传图片需要，需配置成自己的地址)
+#=================================================================
+storage:
+  minio:
+    endpoint: http://124.70.38.88:9000
+    accessKey: smallfish
+    secretKey: smallfish
+  aliyun-oss:
+    endpoint: oss-cn-beijing.aliyuncs.com
+    accessKey:
+    secretKey:

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
  * @description: 用户模块接口
  **/
 @RestController
-@RequestMapping("/user")
 @Slf4j
 public class UserController {
 

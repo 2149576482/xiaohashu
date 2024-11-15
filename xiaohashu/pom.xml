@@ -240,6 +240,11 @@
         <artifactId>xiaohashu-oss-api</artifactId>
         <version>${revision}</version>
       </dependency>
+      <dependency>
+        <groupId>com.arnanzz</groupId>
+        <artifactId>xiaohashu-user-api</artifactId>
+        <version>${revision}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 

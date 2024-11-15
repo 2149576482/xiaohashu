@@ -4,9 +4,9 @@ import cn.hutool.core.util.RandomUtil;
 import com.arnanzz.framework.common.exception.BizException;
 import com.arnanzz.framework.common.response.Response;
 import com.arnanzz.xiaohashu.auth.constant.RedisKeyConstants;
+import com.arnanzz.xiaohashu.auth.domain.service.VerificationCodeService;
 import com.arnanzz.xiaohashu.auth.enums.ResponseCodeEnum;
 import com.arnanzz.xiaohashu.auth.model.vo.verificationcode.SendVerificationCodeReqVO;
-import com.arnanzz.xiaohashu.auth.domain.service.VerificationCodeService;
 import com.arnanzz.xiaohashu.auth.sms.AliyunSmsHelper;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author ArnanZZ
  * @version 1.0
- * @description: 验证码服务实现类
+ * @description:
  **/
 @Slf4j
 @Service
@@ -27,34 +27,31 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
 
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
+
     @Resource(name = "taskExecutor")
     private ThreadPoolTaskExecutor threadPoolTaskExecutor;
+
     @Resource
     private AliyunSmsHelper aliyunSmsHelper;
 
     /**
-     * 发送验证码
+     * 发送短信
      */
     @Override
     public Response<?> send(SendVerificationCodeReqVO sendVerificationCodeReqVO) {
-
-        // 获取手机号
         String phone = sendVerificationCodeReqVO.getPhone();
-
-        // 构建redisKey
-        String redisKey = RedisKeyConstants.buildVerificationCodeKey(phone);
-
-        // 判断是否已存在
-        Boolean result = redisTemplate.hasKey(redisKey);
-        if (Boolean.TRUE.equals(result)) {
+        // 构建key
+        String key = RedisKeyConstants.buildVerificationCodeKey(phone);
+        // 判断是否存在该key
+        Boolean result = redisTemplate.hasKey(key);
+        if (result) {
+            // 如果key没有过期 抛出异常
             throw new BizException(ResponseCodeEnum.VERIFICATION_CODE_SEND_FREQUENTLY);
         }
+        // 生成6位随机数
+        String verificationCode  = RandomUtil.randomNumbers(6);
 
-        // 生成验证码
-        String verificationCode = RandomUtil.randomNumbers(6);
-        log.info("===== 手机号: {} ====== 生成验证码: {}", phone, verificationCode);
-
-        // 发送短信
+        // 调用第三方短信发送服务
         threadPoolTaskExecutor.submit(() -> {
             String signName = "阿里云短信测试";
             String templateCode = "SMS_154950909";
@@ -62,9 +59,10 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
             aliyunSmsHelper.sendMessage(signName, templateCode, phone, templateParam);
         });
 
-        // 存储验证码到redis 3分钟后过期
-        redisTemplate.opsForValue().set(redisKey, verificationCode, 3, TimeUnit.MINUTES);
-
+        log.info("==> 手机号: {}, 已发送验证码：【{}】", phone, verificationCode);
+        redisTemplate.opsForValue().set(key, verificationCode, 3, TimeUnit.MINUTES);
         return Response.success();
     }
+
+
 }

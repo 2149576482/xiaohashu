@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * @author ArnanZZ
  * @version 1.0
- * @description:
+ * @description: druid数据库密码加密
  **/
 @Slf4j
 public class PasswordEncoding {

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author ArnanZZ
  * @version 1.0
- * @description:
+ * @description: 密码加密
  **/
 @Component
 public class PasswordEncoderConfig {

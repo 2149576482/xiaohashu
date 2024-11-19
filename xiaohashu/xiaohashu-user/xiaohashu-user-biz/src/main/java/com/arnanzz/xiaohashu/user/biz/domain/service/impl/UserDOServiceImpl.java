@@ -20,6 +20,7 @@ import com.arnanzz.xiaohashu.user.biz.domain.service.UserDOService;
 import com.arnanzz.xiaohashu.user.biz.enums.ResponseCodeEnum;
 import com.arnanzz.xiaohashu.user.biz.enums.SexEnum;
 import com.arnanzz.xiaohashu.user.biz.model.vo.user.UpdateUserInfoReqVO;
+import com.arnanzz.xiaohashu.user.biz.rpc.DistributedIdGeneratorRpcService;
 import com.arnanzz.xiaohashu.user.biz.rpc.OssRpcService;
 import com.arnanzz.xiaohashu.user.dto.req.FindUserByPhoneReqDTO;
 import com.arnanzz.xiaohashu.user.dto.req.RegisterUserReqDTO;
@@ -53,6 +54,9 @@ public class UserDOServiceImpl implements UserDOService {
 
     @Resource
     private OssRpcService ossRpcService;
+
+    @Resource
+    private DistributedIdGeneratorRpcService distributedIdGeneratorRpcService;
 
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
@@ -123,11 +127,19 @@ public class UserDOServiceImpl implements UserDOService {
 
         // 否则注册新用户
         // 获取全局自增的小哈书 ID
-        Long xiaohashuId = redisTemplate.opsForValue().increment(RedisKeyConstants.XIAOHASHU_ID_GENERATOR_KEY);
+        // Long xiaohashuId = redisTemplate.opsForValue().increment(RedisKeyConstants.XIAOHASHU_ID_GENERATOR_KEY);
+
+        // RPC 调用 调用分布式ID 生成 小哈书 ID
+        String xiaohashuId = distributedIdGeneratorRpcService.getXiaohashuId();
+
+        // RPC 调用 调用分布式ID 生成 用户 ID
+        String userIDStr = distributedIdGeneratorRpcService.getUserId();
+        Long userId = Long.valueOf(userIDStr);
 
         UserDO userDO = UserDO.builder()
+                .id(userId)
                 .phone(phone)
-                .xiaohashuId(String.valueOf(xiaohashuId)) // 自动生成小红书号 ID
+                .xiaohashuId(xiaohashuId) // 自动生成小红书号 ID
                 .nickname("小红薯" + xiaohashuId) // 自动生成昵称, 如：小红薯10000
                 .status(StatusEnum.ENABLE.getValue()) // 状态为启用
                 .createTime(LocalDateTime.now())
@@ -139,7 +151,7 @@ public class UserDOServiceImpl implements UserDOService {
         userDOMapper.insertSelective(userDO);
 
         // 获取刚刚添加入库的用户 ID
-        Long userId = userDO.getId();
+        // Long userId = userDO.getId();
 
         // 给该用户分配一个默认角色
         UserRoleRelDO userRoleDO = UserRoleRelDO.builder()

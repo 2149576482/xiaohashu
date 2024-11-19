@@ -40,7 +40,10 @@ public class AuthController {
         return authService.updatePassword(updatePasswordReqVO);
     }
 
-    @PostMapping("/logout")
+    /**
+     * 用户退出
+     */
+    @GetMapping("/logout")
     @ApiOperationLog(description = "账号登出")
     public Response<?> logout() {
         return authService.logout();

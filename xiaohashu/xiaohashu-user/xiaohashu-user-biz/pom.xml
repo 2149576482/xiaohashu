@@ -81,8 +81,12 @@
             <groupId>com.arnanzz</groupId>
             <artifactId>xiaohashu-user-api</artifactId>
         </dependency>
+        <!-- 自增长服务 -->
+        <dependency>
+            <groupId>com.arnanzz</groupId>
+            <artifactId>xiaohashu-distributed-id-generator-api</artifactId>
+        </dependency>
     </dependencies>
-
 
     <build>
         <plugins>

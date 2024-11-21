@@ -6,10 +6,10 @@ import com.arnanzz.kv.biz.domain.entity.NoteContentDO;
 import com.arnanzz.kv.biz.domain.repository.NoteContentRepository;
 import com.arnanzz.kv.biz.domain.service.NoteContentService;
 import com.arnanzz.kv.biz.enums.ResponseCodeEnum;
-import com.arnanzz.kv.dto.req.AddNoteContentReqDTO;
-import com.arnanzz.kv.dto.req.DeleteNoteContentReqDTO;
-import com.arnanzz.kv.dto.req.FindNoteContentReqDTO;
-import com.arnanzz.kv.dto.resp.FindNoteContentRspDTO;
+import com.arnanzz.xiaohashu.kv.dto.req.AddNoteContentReqDTO;
+import com.arnanzz.xiaohashu.kv.dto.req.DeleteNoteContentReqDTO;
+import com.arnanzz.xiaohashu.kv.dto.req.FindNoteContentReqDTO;
+import com.arnanzz.xiaohashu.kv.dto.resp.FindNoteContentRspDTO;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -60,7 +60,7 @@ public class NoteContentServiceImpl implements NoteContentService {
         NoteContentDO noteContentDO = optional.get();
         // 构建返参 DTO
         FindNoteContentRspDTO findNoteContentRspDTO = FindNoteContentRspDTO.builder()
-                .noteId(noteContentDO.getId())
+                .noteId(noteContentDO.getId().toString())
                 .content(noteContentDO.getContent())
                 .build();
 
@@ -73,13 +73,13 @@ public class NoteContentServiceImpl implements NoteContentService {
     @Override
     public Response<?> addNoteContent(AddNoteContentReqDTO addNoteContentReqDTO) {
         // 笔记 ID
-        Long noteId = addNoteContentReqDTO.getNoteId();
+        String noteId = addNoteContentReqDTO.getNoteId();
         // 笔记内容
         String content = addNoteContentReqDTO.getContent();
 
         // 构建数据库 DO 实体类
         NoteContentDO nodeContent = NoteContentDO.builder()
-                .id(UUID.randomUUID()) // TODO: 暂时用 UUID, 目的是为了下一章讲解压测，不用动态传笔记 ID。后续改为笔记服务传过来的笔记 ID
+                .id(UUID.fromString(noteId))
                 .content(content)
                 .build();
 

@@ -19,6 +19,18 @@ spring:
             - Path=/user/**
           filters:
             - StripPrefix=1
+        - id: note
+          uri: lb://xiaohashu-note
+          predicates:
+            - Path=/note/**
+          filters:
+            - StripPrefix=1
+        - id: oss
+          uri: lb://xiaohashu-oss
+          predicates:
+            - Path=/file/**
+          filters:
+            - StripPrefix=1
   data:
     redis:
       database: 0 # Redis 数据库索引（默认为 0）

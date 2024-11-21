@@ -2,10 +2,10 @@ package com.arnanzz.kv.biz.controller;
 
 import com.arnanzz.framework.common.response.Response;
 import com.arnanzz.kv.biz.domain.service.NoteContentService;
-import com.arnanzz.kv.dto.req.AddNoteContentReqDTO;
-import com.arnanzz.kv.dto.req.DeleteNoteContentReqDTO;
-import com.arnanzz.kv.dto.req.FindNoteContentReqDTO;
-import com.arnanzz.kv.dto.resp.FindNoteContentRspDTO;
+import com.arnanzz.xiaohashu.kv.dto.req.AddNoteContentReqDTO;
+import com.arnanzz.xiaohashu.kv.dto.req.DeleteNoteContentReqDTO;
+import com.arnanzz.xiaohashu.kv.dto.req.FindNoteContentReqDTO;
+import com.arnanzz.xiaohashu.kv.dto.resp.FindNoteContentRspDTO;
 import jakarta.annotation.Resource;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;

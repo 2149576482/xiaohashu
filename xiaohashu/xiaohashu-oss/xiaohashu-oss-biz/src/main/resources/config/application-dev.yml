@@ -8,5 +8,5 @@ storage:
     secretKey: smallfish
   aliyun-oss:
     endpoint: oss-cn-beijing.aliyuncs.com
-    accessKey:
-    secretKey:
+    accessKey: LTAI5tGFwwZf3PF7eqGM4Ku5
+    secretKey: n5iDGNHb6vbmxtbp2UDenBAmywF0Ws

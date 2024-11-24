@@ -14,4 +14,14 @@ public interface NoteDOMapper {
     int updateByPrimaryKeySelective(NoteDO record);
 
     int updateByPrimaryKey(NoteDO record);
+
+    /**
+     * 修改可见性
+     */
+    int updateVisibleOnlyMe(NoteDO noteDO);
+
+    /**
+     * 修改置顶状态
+     */
+    int updateIsTop(NoteDO noteDO);
 }

@@ -27,8 +27,8 @@
     <module>xiaohashu-oss</module>
     <!-- 用户服务 -->
     <module>xiaohashu-user</module>
-      <module>xiaohashu-kv</module>
-      <module>xiaohashu-distributed-id-generator</module>
+    <module>xiaohashu-kv</module>
+    <module>xiaohashu-distributed-id-generator</module>
     <module>xiaohashu-note</module>
   </modules>
 
@@ -65,6 +65,7 @@
     <activation.version>1.1.1</activation.version>
     <jaxb-runtime.version>2.3.3</jaxb-runtime.version>
     <feign-form.version>3.8.0</feign-form.version>
+    <caffeine.version>3.1.8</caffeine.version>
   </properties>
 
   <!-- 统一依赖管理 -->
@@ -237,6 +238,12 @@
         <groupId>io.github.openfeign.form</groupId>
         <artifactId>feign-form</artifactId>
         <version>${feign-form.version}</version>
+      </dependency>
+      <!-- Caffeine 本地缓存 -->
+      <dependency>
+        <groupId>com.github.ben-manes.caffeine</groupId>
+        <artifactId>caffeine</artifactId>
+        <version>${caffeine.version}</version>
       </dependency>
       <dependency>
         <groupId>com.arnanzz</groupId>

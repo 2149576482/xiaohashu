@@ -1,7 +1,7 @@
 package com.arnanzz.framework.biz.context.holder;
 
 import com.alibaba.ttl.TransmittableThreadLocal;
-import com.smallfish.framework.common.constant.GlobalConstants;
+import com.arnanzz.framework.common.constant.GlobalConstants;
 
 import java.util.HashMap;
 import java.util.Map;

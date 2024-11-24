@@ -4,6 +4,7 @@ import com.arnanzz.framework.common.response.Response;
 import com.arnanzz.xiaohashu.kv.constant.ApiConstants;
 import com.arnanzz.xiaohashu.kv.dto.req.AddNoteContentReqDTO;
 import com.arnanzz.xiaohashu.kv.dto.req.DeleteNoteContentReqDTO;
+import com.arnanzz.xiaohashu.kv.dto.req.FindNoteContentReqDTO;
 import com.arnanzz.xiaohashu.kv.dto.resp.FindNoteContentRspDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +31,7 @@ public interface NoteContentFeignApi {
      * 通过id获取笔记
      */
     @PostMapping(value = PREFIX + "/note/content/find")
-    Response<FindNoteContentRspDTO> findNoteContent(@RequestBody AddNoteContentReqDTO addNoteContentReqDTO);
+    Response<FindNoteContentRspDTO> findNoteContent(@RequestBody FindNoteContentReqDTO findNoteContentReqDTO);
 
     /**
      * 通过笔记id 删除笔记内容

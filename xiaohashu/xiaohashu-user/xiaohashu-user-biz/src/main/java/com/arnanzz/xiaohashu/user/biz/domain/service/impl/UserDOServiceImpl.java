@@ -1,6 +1,7 @@
 package com.arnanzz.xiaohashu.user.biz.domain.service.impl;
 
 
+import cn.hutool.core.util.RandomUtil;
 import com.arnanzz.framework.biz.context.holder.LoginUserContextHolder;
 import com.arnanzz.framework.common.enums.DeletedEnum;
 import com.arnanzz.framework.common.enums.StatusEnum;
@@ -22,16 +23,21 @@ import com.arnanzz.xiaohashu.user.biz.enums.SexEnum;
 import com.arnanzz.xiaohashu.user.biz.model.vo.user.UpdateUserInfoReqVO;
 import com.arnanzz.xiaohashu.user.biz.rpc.DistributedIdGeneratorRpcService;
 import com.arnanzz.xiaohashu.user.biz.rpc.OssRpcService;
+import com.arnanzz.xiaohashu.user.dto.req.FindUserByIdReqDTO;
 import com.arnanzz.xiaohashu.user.dto.req.FindUserByPhoneReqDTO;
 import com.arnanzz.xiaohashu.user.dto.req.RegisterUserReqDTO;
 import com.arnanzz.xiaohashu.user.dto.req.UpdateUserPasswordReqDTO;
+import com.arnanzz.xiaohashu.user.dto.resp.FindUserByIdRspDTO;
 import com.arnanzz.xiaohashu.user.dto.resp.FindUserByPhoneRspDTO;
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
 import com.google.common.base.Preconditions;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,6 +47,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 用户模块实现类
@@ -66,6 +73,83 @@ public class UserDOServiceImpl implements UserDOService {
 
     @Resource
     private RoleDOMapper roleDOMapper;
+
+    @Resource(name = "taskExecutor")
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
+
+    /**
+     * 用户信息本地保存
+     */
+    private static final Cache<Long, FindUserByIdRspDTO> LOCAL_CACHE = Caffeine.newBuilder()
+            .initialCapacity(10000) // 设置初始容量
+            .maximumSize(10000) // 设置最大容量
+            .expireAfterWrite(1, TimeUnit.HOURS) // 设置缓存条目在写入后1一个小时过期
+            .build();
+
+    /**
+     * 根据用户id 查询用户信息
+     */
+    @Override
+    public Response<FindUserByIdRspDTO> findById(FindUserByIdReqDTO findUserByIdReqDTO) {
+
+        Long id = findUserByIdReqDTO.getId();
+
+        // 先从本地缓存中获取
+        FindUserByIdRspDTO findUserByIdRspDTOLocalCache = LOCAL_CACHE.getIfPresent(id);
+        if (Objects.nonNull(findUserByIdRspDTOLocalCache)) {
+            log.info("==> 命中了本地缓存；{}", findUserByIdRspDTOLocalCache);
+            return Response.success(findUserByIdRspDTOLocalCache);
+        }
+
+        // 用户缓存redis Key
+        String userInfoKey = RedisKeyConstants.buildUserInfoKey(id);
+
+        // 查询Redis缓存
+        String userInfoValue = (String) redisTemplate.opsForValue().get(userInfoKey);
+
+        // 若缓存中存在数据
+        if (StringUtils.isNotBlank(userInfoValue)) {
+            FindUserByIdRspDTO findUserByIdRspDTO = JsonUtils.parseObject(userInfoValue, FindUserByIdRspDTO.class);
+
+            // 若缓存中存在数据 异步写入本地缓存
+            threadPoolTaskExecutor.execute(() -> {
+                if (Objects.nonNull(findUserByIdRspDTO)) {
+                    // 写入本地缓存
+                    LOCAL_CACHE.put(id, findUserByIdRspDTO);
+                }
+            });
+            return Response.success(findUserByIdRspDTO);
+        }
+
+        // 否则 去数据库查询
+        UserDO userDO = userDOMapper.selectByPrimaryKey(id);
+        // 判空
+        if (Objects.isNull(userDO)) {
+            threadPoolTaskExecutor.execute(() -> {
+                // 设置随机过期时间 防止缓存穿透
+                // 1分钟 + 随机时间
+                long expireSeconds = 60 + RandomUtil.randomInt(60);
+                // 缓存空值
+                redisTemplate.opsForValue().set(userInfoKey, "null", expireSeconds, TimeUnit.SECONDS);
+            });
+            throw new BizException(ResponseCodeEnum.USER_NOT_FOUND);
+        }
+
+        // 构建对象
+        FindUserByIdRspDTO findUserByIdRspDTO = FindUserByIdRspDTO.builder()
+                .id(userDO.getId())
+                .nickname(userDO.getNickname())
+                .avatar(userDO.getAvatar()).build();
+
+        // 异步将用户信息写入缓存 提升速度
+        threadPoolTaskExecutor.execute(() -> {
+            // 设置过期时间 防止雪崩 保底一天
+            long expireSeconds = 60*60*24 + RandomUtil.randomInt(60*60*24);
+            redisTemplate.opsForValue().set(userInfoKey, JsonUtils.toJsonString(userDO), expireSeconds, TimeUnit.SECONDS);
+        });
+
+        return Response.success(findUserByIdRspDTO);
+    }
 
     /**
      * 更新用户密码
@@ -127,8 +211,6 @@ public class UserDOServiceImpl implements UserDOService {
 
         // 否则注册新用户
         // 获取全局自增的小哈书 ID
-        // Long xiaohashuId = redisTemplate.opsForValue().increment(RedisKeyConstants.XIAOHASHU_ID_GENERATOR_KEY);
-
         // RPC 调用 调用分布式ID 生成 小哈书 ID
         String xiaohashuId = distributedIdGeneratorRpcService.getXiaohashuId();
 
@@ -149,9 +231,6 @@ public class UserDOServiceImpl implements UserDOService {
 
         // 添加入库
         userDOMapper.insertSelective(userDO);
-
-        // 获取刚刚添加入库的用户 ID
-        // Long userId = userDO.getId();
 
         // 给该用户分配一个默认角色
         UserRoleRelDO userRoleDO = UserRoleRelDO.builder()

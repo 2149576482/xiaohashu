@@ -4,6 +4,9 @@ import com.arnanzz.framework.common.response.Response;
 import com.arnanzz.xiaohashu.kv.api.NoteContentFeignApi;
 import com.arnanzz.xiaohashu.kv.dto.req.AddNoteContentReqDTO;
 import com.arnanzz.xiaohashu.kv.dto.req.DeleteNoteContentReqDTO;
+import com.arnanzz.xiaohashu.kv.dto.req.FindNoteContentReqDTO;
+import com.arnanzz.xiaohashu.kv.dto.resp.FindNoteContentRspDTO;
+import com.arnanzz.xiaohashu.note.biz.model.vo.FindNoteDetailRspVO;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
 
@@ -38,9 +41,23 @@ public class KeyValueRpcService {
     }
 
     /**
+     * 查询笔记内容
+     */
+    public String findNoteContent(String uuid) {
+        FindNoteContentReqDTO findNoteContentReqDTO = new FindNoteContentReqDTO();
+        findNoteContentReqDTO.setNoteId(uuid);
+        Response<FindNoteContentRspDTO> response = noteContentFeignApi.findNoteContent(findNoteContentReqDTO);
+
+        if (Objects.isNull(response) || !response.isSuccess() || Objects.isNull(response.getData())) {
+            return null;
+        }
+        return response.getData().getContent();
+    }
+
+    /**
      * 删除笔记内容
      */
-    public Boolean deleteNoteContent(String uuid) {
+    public boolean deleteNoteContent(String uuid) {
         DeleteNoteContentReqDTO deleteNoteContentReqDTO = DeleteNoteContentReqDTO.builder()
                 .noteId(uuid).build();
         Response<?> response = noteContentFeignApi.deleteNoteContent(deleteNoteContentReqDTO);

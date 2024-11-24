@@ -14,9 +14,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.smallfish</groupId>
+            <groupId>com.arnanzz</groupId>
             <artifactId>xiaoha-common</artifactId>
-            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

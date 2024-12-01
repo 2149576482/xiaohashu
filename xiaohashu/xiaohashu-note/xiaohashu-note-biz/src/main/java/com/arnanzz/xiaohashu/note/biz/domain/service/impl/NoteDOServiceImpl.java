@@ -119,6 +119,18 @@ public class NoteDOServiceImpl implements NoteDOService{
     public Response<?> visibleOnlyMe(UpdateNoteVisibleOnlyMeReqVO updateNoteVisibleOnlyMeReqVO) {
         Long noteId = updateNoteVisibleOnlyMeReqVO.getId();
 
+        NoteDO selectNoteDO = noteDOMapper.selectByPrimaryKey(noteId);
+        // 判断笔记是否存在
+        if (Objects.isNull(selectNoteDO)) {
+            throw new BizException(ResponseCodeEnum.NOTE_NOT_FOUND);
+        }
+
+        // 判断权限：非笔记发布者不允许修改笔记权限
+        Long currUserId = LoginUserContextHolder.getUserId();
+        if (!Objects.equals(currUserId, selectNoteDO.getCreatorId())) {
+            throw new BizException(ResponseCodeEnum.NOTE_CANT_OPERATE);
+        }
+
         // 构建更新 DO 实体类
         NoteDO noteDO = NoteDO.builder()
                 .id(noteId)
@@ -152,6 +164,19 @@ public class NoteDOServiceImpl implements NoteDOService{
     @Transactional(rollbackFor = Exception.class)
     public Response<?> deleteNote(DeleteNoteReqVO deleteNoteReqVO) {
         Long noteId = deleteNoteReqVO.getId();
+
+        NoteDO selectNoteDO = noteDOMapper.selectByPrimaryKey(noteId);
+
+        // 判断笔记是否存在
+        if (Objects.isNull(selectNoteDO)) {
+            throw new BizException(ResponseCodeEnum.NOTE_NOT_FOUND);
+        }
+
+        // 判断是否有权限
+        Long userId = LoginUserContextHolder.getUserId();
+        if (!Objects.equals(userId, selectNoteDO.getCreatorId())) {
+            throw new BizException(ResponseCodeEnum.NOTE_CANT_OPERATE);
+        }
 
         // 逻辑删除
         NoteDO noteDO = NoteDO.builder()
@@ -224,6 +249,21 @@ public class NoteDOServiceImpl implements NoteDOService{
             default:
                 break;
         }
+
+        // 当前登录用户的ID
+        Long userId = LoginUserContextHolder.getUserId();
+        NoteDO selectNoteDO = noteDOMapper.selectByPrimaryKey(noteId);
+
+        // 笔记不存在
+        if (Objects.isNull(selectNoteDO)) {
+            throw new BizException(ResponseCodeEnum.NOTE_NOT_FOUND);
+        }
+
+        // 判断权限 非笔记发布者不允许更改笔记
+        if(!Objects.equals(userId, selectNoteDO.getCreatorId())) {
+            throw new BizException(ResponseCodeEnum.NOTE_CANT_OPERATE);
+        }
+
         // 话题id
         Long topicId = updateNoteReqVO.getTopicId();
         String topicName = null;

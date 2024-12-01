@@ -113,9 +113,9 @@ public class AuthServiceImpl implements AuthService {
         String encodePassword = passwordEncoder.encode(newPassword);
 
         // 调用用户服务 更新密码
-        userRpcService.updatePassword(encodePassword);
+        boolean result = userRpcService.updatePassword(encodePassword);
 
-        return Response.success();
+        return result ? Response.success() : Response.fail();
     }
 
     @Override

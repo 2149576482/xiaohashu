@@ -55,4 +55,4 @@ spring:
 
 logging:
   level:
-    com.arnanzz.xiaohashu.auth.domain.mapper: debug
+    com.arnanzz.xiaohashu.user.biz.domain.mapper: debug

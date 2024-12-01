@@ -1,6 +1,9 @@
 package com.arnanzz.xiaohashu.user.biz.domain.mapper;
 
 import com.arnanzz.xiaohashu.user.biz.domain.entity.UserDO;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserDOMapper {
 
@@ -28,4 +31,9 @@ public interface UserDOMapper {
      * 根据手机号查询用户
      */
     UserDO selectByPhone(String phone);
+
+    /**
+     * 批量查询用户信息
+     */
+    List<UserDO> selectByIds(@Param("ids") List<Long> ids);
 }

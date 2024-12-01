@@ -2,12 +2,11 @@ package com.arnanzz.xiaohashu.user.biz.domain.service;
 
 import com.arnanzz.framework.common.response.Response;
 import com.arnanzz.xiaohashu.user.biz.model.vo.user.UpdateUserInfoReqVO;
-import com.arnanzz.xiaohashu.user.dto.req.FindUserByIdReqDTO;
-import com.arnanzz.xiaohashu.user.dto.req.FindUserByPhoneReqDTO;
-import com.arnanzz.xiaohashu.user.dto.req.RegisterUserReqDTO;
-import com.arnanzz.xiaohashu.user.dto.req.UpdateUserPasswordReqDTO;
+import com.arnanzz.xiaohashu.user.dto.req.*;
 import com.arnanzz.xiaohashu.user.dto.resp.FindUserByIdRspDTO;
 import com.arnanzz.xiaohashu.user.dto.resp.FindUserByPhoneRspDTO;
+
+import java.util.List;
 
 public interface UserDOService{
 
@@ -35,4 +34,9 @@ public interface UserDOService{
      * 根据用户id 查询用户信息
      */
     Response<FindUserByIdRspDTO> findById(FindUserByIdReqDTO findUserByIdReqDTO);
+
+    /**
+     * 批量根据用户 ID 查询用户信息
+     */
+    Response<List<FindUserByIdRspDTO>> findByIds(FindUsersByIdsReqDTO findUsersByIdsReqDTO);
 }

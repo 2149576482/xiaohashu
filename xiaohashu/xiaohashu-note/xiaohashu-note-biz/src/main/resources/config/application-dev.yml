@@ -54,7 +54,7 @@ spring:
           max-idle: 10 # 连接池中的最大空闲连接
 
 rocketmq:
-  name-server: 192.168.117.200:9876 # name server 地址
+  name-server: 127.0.0.1:9876 # name server 地址
   producer:
     group: xiaohashu_group
     send-message-timeout: 3000 # 消息发送超时时间，默认 3s
@@ -67,4 +67,4 @@ rocketmq:
 
 logging:
   level:
-    com.arnanzz.xiaohashu.note.domain.mapper: debug
+    com.arnanzz.xiaohashu.note.biz.domain.mapper: debug

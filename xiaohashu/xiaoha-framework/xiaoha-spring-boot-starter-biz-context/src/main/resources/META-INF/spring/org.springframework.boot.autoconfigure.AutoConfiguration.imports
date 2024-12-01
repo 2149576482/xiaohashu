@@ -1,1 +1,2 @@
 com.arnanzz.framework.biz.context.config.ContextAutoConfiguration
+com.arnanzz.framework.biz.context.config.FeignContextAutoConfiguration

@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: xiaohashu-user-relation # 应用名称
+  profiles:
+    active: dev # 默认激活 dev 本地开发环境
+  cloud:
+    nacos:
+      config:
+        server-addr: http://192.168.117.200:8848
+        prefix: ${spring.application.name}
+        group: DEFAULT_GROUP
+        namespace: xiaohashu
+        file-extension: yaml
+        refresh-enabled: true #开启动态刷新
+      discovery:
+        enabled: true
+        group: DEFAULT_GROUP
+        namespace: xiaohashu
+        server-addr: 192.168.117.200:8848

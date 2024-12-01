@@ -56,12 +56,16 @@ public class UserRpcService {
     /**
      * 调用用户服务 更新密码
      */
-    public void updatePassword(String encodePassword) {
+    public boolean updatePassword(String encodePassword) {
 
         UpdateUserPasswordReqDTO updateUserPasswordReqDTO = UpdateUserPasswordReqDTO.builder()
                 .encodePassword(encodePassword).build();
 
-        userFeignApi.updatePassword(updateUserPasswordReqDTO);
+        Response<?> response = userFeignApi.updatePassword(updateUserPasswordReqDTO);
 
+        if (response.isSuccess()){
+            return true;
+        }
+        return false;
     }
 }
